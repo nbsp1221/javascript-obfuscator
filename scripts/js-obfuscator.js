@@ -825,7 +825,7 @@ const CHARACTER = {
 		},
 		result: () => {
 			if (!blacklist.dot && !isNoWrapString()) return wrapString('.');
-			if (!blacklist.slash) return `(${makeDigit(1, true)}/${makeDigit(2, true)}+[])[${makeDigit(1)}]`;
+			if (!blacklist.slash) return `((${makeDigit(1, true)}/${makeDigit(2, true)})+[])[${makeDigit(1)}]`;
 			return `(${makeInternal(1.1e+101)}+[])[${makeDigit(1)}]`;
 		}
 	},
@@ -1101,6 +1101,10 @@ const obfuscate = (jsCode, variableCandidates = [], iterationCount = 50) => {
 		const shuffle = [];
 
 		for (const key in characterResults) {
+			if (characterResults[key].indexOf(`'`) !== -1) continue;
+			if (characterResults[key].indexOf(`"`) !== -1) continue;
+			if (characterResults[key].indexOf('`') !== -1) continue;
+
 			candidates.push(characterResults[key]);
 		}
 
