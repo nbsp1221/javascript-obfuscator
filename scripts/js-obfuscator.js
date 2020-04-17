@@ -739,7 +739,7 @@ const CHARACTER = {
 			return true;
 		},
 		result: () => {
-			if (!blacklist.backslash && !isNoWrapString()) return wrapString('\\n');
+			if (!blacklist.lowerCase && !blacklist.backslash && !isNoWrapString()) return wrapString('\\n');
 			return makeEval(makeString('return unescape("%0a")'));
 		}
 	},
