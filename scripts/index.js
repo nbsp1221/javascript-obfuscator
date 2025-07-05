@@ -52,7 +52,9 @@ const initCodeArea = () => {
 
 const initOptionArea = () => {
 	const optionUseVariable = document.getElementById('option-use-variable');
+	const optionNodeJS = document.getElementById('option-nodejs');
 	const blacklistEquals = document.getElementById('blacklist-equals');
+
 
 	optionUseVariable.onchange = () => {
 		optionVariableCandidates.disabled = !optionUseVariable.checked;
@@ -60,6 +62,9 @@ const initOptionArea = () => {
 		blacklistEquals.checked = false;
 		blacklistEquals.disabled = optionUseVariable.checked;
 		option.useVariable = !option.useVariable;
+	};
+	optionNodeJS.onchange = () => {
+		option.nodejs = !option.nodejs;
 	};
 };
 

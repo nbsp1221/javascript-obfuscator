@@ -30,7 +30,7 @@
 					<div class="run-button"><button id="run-button">Run obfuscated code</button></div>
 				</div>
 				<fieldset>
-					<legend>Option</legend>
+					<legend>Options</legend>
 					<div class="fieldset-area">
 						<section>
 							<div class="title">Variable</div>
@@ -51,6 +51,18 @@
 										<p>The larger this value, the slower running time, but the probability to get short code would be increased.</p>
 									</div>
 									<input type="number" id="option-iteration-count" min="1" placeholder="50" value="50">
+								</div>
+							</div>
+						</section>
+						<section>
+							<div class="title">NodeJS</div>
+							<div class="checkbox-area">
+								<div>
+									<input type="checkbox" id="option-nodejs">
+									<label for="option-nodejs">Add NodeJS functions</label>
+									<div class="explain">
+										<p>Make 'require', 'module', 'exports', and other NodeJS functions available in the obfuscated code scope.</p>
+									</div>
 								</div>
 							</div>
 						</section>
