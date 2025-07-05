@@ -7,7 +7,8 @@
  */
 
 const option = {
-	useVariable: true
+	useVariable: true,
+	nodejs: false
 };
 
 const blacklist = {
@@ -1002,7 +1003,16 @@ const makeString = (value, wrap = false) => {
 };
 
 const makeEval = (value) => {
-	return `[][${makeString('flat')}][${makeString('constructor')}](${value})()`;
+	if (option.nodejs) {
+		const args = ['require', 'module', 'exports', '__dirname', '__filename'];
+		const argsStr = args.map(makeString).join(', ');
+		const callArgsStr = args.join(', ');
+
+		return `[][${makeString('flat')}][${makeString('constructor')}](${argsStr}, ${value})(${callArgsStr})`;
+	}
+	else {
+		return `[][${makeString('flat')}][${makeString('constructor')}](${value})()`;
+	}
 };
 
 const createVariableNames = (candidates, variableCount) => {
